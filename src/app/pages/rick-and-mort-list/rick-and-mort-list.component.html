@@ -1,0 +1,89 @@
+<div class="card mb-3">
+  <div class="card-header">
+    <div class="row gap-1 align-items-center" [formGroup]="searchForm">
+      <div class="col-lg-2 col-md-12 col-sm-12">
+        <b>Filter Characters</b></div>
+      <div class="row gap-2 col-lg-10 col-md-12">
+        <div class="col-lg-3 col-md-5 col-sm-4 col-12">
+          <input type="text" formControlName="name" class="form-control" placeholder="name">
+        </div>
+        <div class="col-lg-3 col-md-5 col-sm-4 col-12">
+          <input type="text" formControlName="type" class="form-control" placeholder="type">
+        </div>
+        <div class="col-lg-2 col-md-5 col-sm-4 col-12">
+          <select formControlName="status" class="form-select">
+            <option ngValue="" selected>Status</option>
+            <ng-container *ngFor="let item of type">
+              <option>{{item.name}}</option>
+            </ng-container>
+          </select>
+        </div>
+        <div class="col-lg-2 col-md-5 col-sm-4 col-12">
+          <select formControlName="gender" class="form-select">
+            <option ngValue="" disabled selected>Gender</option>
+            <ng-container *ngFor="let item of customGender">
+              <option>{{item.name}}</option>
+            </ng-container>
+          </select>
+        </div>
+        <div class="col-lg-1 col-md-12 col-sm-12 col-12 d-flex gap-1">
+          <button class="btn btn-primary d-flex align-items-center justify-content-center"
+                  (click)="onFilterChange()">
+            <img width="20" src="assets/images/svg/search.svg" alt="">Search
+          </button>
+          <button class="btn btn-danger d-flex align-items-center justify-content-center"
+                  (click)="clearSearchFields()">
+            <img width="20" src="assets/images/svg/remove.svg" alt="clear">
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row justify-content-center">
+  <ng-container *ngIf="rickMorty$ | async as item; else loadingTemplate">
+    <ng-container *ngFor="let data of item.results  | filter: filterCriteria">
+      <div class="card p-0 col-lg-2 col-md-3 col-sm-4 col-5 mx-2 mt-0 m-3">
+        <img src="{{data.image}}" class="card-img-top" alt="">
+        <div class="card-body">
+          <h5 class="card-title mb-3">{{data.name}}</h5>
+          <p class="card-text m-0"><b>Status: </b>{{data.status}}</p>
+          <p class="card-text m-0"><b>Species: </b>{{data.species}}</p>
+          <p class="card-text m-0"><b>Gender: </b>{{data.gender}}</p>
+        </div>
+        <div class="card-footer border-0 bg-transparent">
+          <a routerLink="/character/{{data.id}}" class="btn d-block btn-primary"> <i class="bi bi-arrow-right"></i>
+            Details</a>
+        </div>
+      </div>
+    </ng-container>
+    <div class="row justify-content-center gap-2">
+      <button class="col-md-2 btn btn-primary" *ngIf="item.info.prev !==  null"
+              (click)="nextAndBackPage('back',item.info)">First Page
+      </button>
+      <button class="col-md-2 btn btn-primary" *ngIf="item.info.prev !==  null"
+              (click)="nextAndBackPage('back',item.info)">Back
+      </button>
+      <button class="col-md-2 btn btn-primary" *ngIf="item.info.next !==  null"
+              (click)="nextAndBackPage('next',item.info)">Next
+      </button>
+    </div>
+  </ng-container>
+
+</div>
+
+<ng-template #loadingTemplate>
+  <app-loading *ngIf="loading; else errorTemplate"></app-loading>
+  <ng-template #errorTemplate>
+    <div class="alert w-50 alert-danger">
+      <p class="m-0 text-center">Kriterlere uygun karakter mevcut değil</p>
+    </div>
+  </ng-template>
+</ng-template>
+
+
+
+
+
+
+

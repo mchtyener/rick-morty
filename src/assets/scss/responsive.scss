@@ -1,0 +1,17 @@
+$only-phone: '(max-width: 767px)';
+$phone-xsmall: '(max-width: 320px)';
+$phone-landscape: '(min-width: 640px)';
+
+$tablet-portrait: '(min-width: 768px)';
+$tablet-landscape: '(min-width: 1024px)';
+
+$desktop: '(min-width: 1366px)';
+$desktop-xlarge: '(min-width: 1440px)';
+$desktop-2xlarge: '(min-width: 1650px)';
+$desktop-3xlarge: '(min-width: 1920px)';
+
+@mixin respond-($media) {
+  @media only screen and #{$media} {
+    @content;
+  }
+}

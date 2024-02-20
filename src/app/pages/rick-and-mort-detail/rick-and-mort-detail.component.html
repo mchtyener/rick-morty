@@ -1,0 +1,22 @@
+<div class="card" *ngIf="rickMorty$ | async as item;else loadingTemplate">
+  <img src="{{item.image}}" style="width: 450px; height: 100%" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{item.name}}</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+      content.</p>
+    <p class="card-text m-0"><b>Status: </b>{{item.status}}</p>
+    <p class="card-text m-0"><b>Species: </b>{{item.species}}</p>
+    <p class="card-text m-0"><b>Gender: </b>{{item.gender}}</p>
+    <p class="card-text m-0"><b>Date: </b>{{item.created | date}}</p>
+  </div>
+</div>
+<ng-template #loadingTemplate>
+  <app-loading *ngIf="loading; else errorTemplate"></app-loading>
+  <ng-template #errorTemplate>
+    <div class="d-flex justify-content-center">
+      <div class="alert w-75 alert-danger">
+        <p class="m-0 text-center">Böyle bir karakter mevcut değil</p>
+      </div>
+    </div>
+  </ng-template>
+</ng-template>
