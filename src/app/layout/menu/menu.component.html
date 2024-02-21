@@ -1,0 +1,9 @@
+<ul>
+  <li [routerLinkActive]="['active']"
+      [routerLinkActiveOptions]="{exact: true}"
+      [routerLink]="item.path">
+    <img src="assets/images/svg/{{item.img}}" alt="{{item.title}}">
+    <a>{{item.text}}</a>
+  </li>
+</ul>
+

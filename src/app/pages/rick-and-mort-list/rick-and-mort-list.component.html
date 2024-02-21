@@ -59,9 +59,6 @@
     </ng-container>
     <div class="row justify-content-center gap-2">
       <button class="col-md-2 btn btn-primary" *ngIf="item.info.prev !==  null"
-              (click)="nextAndBackPage('back',item.info)">First Page
-      </button>
-      <button class="col-md-2 btn btn-primary" *ngIf="item.info.prev !==  null"
               (click)="nextAndBackPage('back',item.info)">Back
       </button>
       <button class="col-md-2 btn btn-primary" *ngIf="item.info.next !==  null"
@@ -76,7 +73,7 @@
   <app-loading *ngIf="loading; else errorTemplate"></app-loading>
   <ng-template #errorTemplate>
     <div class="alert w-50 alert-danger">
-      <p class="m-0 text-center">Kriterlere uygun karakter mevcut değil</p>
+      <p class="m-0 text-center">Sonuç bulunamadı.</p>
     </div>
   </ng-template>
 </ng-template>

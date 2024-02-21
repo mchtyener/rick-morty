@@ -1,16 +1,7 @@
 <div class="container-fluid my-5">
   <div class="row">
     <div class="col-lg-2 col-md-12  card-border">
-      <ng-container *ngFor="let item of myCustomMenuItems">
-        <ul>
-          <li [routerLinkActive]="['active']"
-              [routerLinkActiveOptions]="{exact: true}"
-              [routerLink]="item.path">
-            <img src="assets/images/svg/{{item.img}}" alt="{{item.title}}">
-            <a>{{item.text}}</a>
-          </li>
-        </ul>
-      </ng-container>
+      <app-menu *ngFor="let item of myCustomMenuItems" [item]="item"></app-menu>
     </div>
     <div class="col-lg-10 col-md-12 ">
       <router-outlet></router-outlet>

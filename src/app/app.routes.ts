@@ -1,17 +1,10 @@
-import {Routes, withComponentInputBinding} from '@angular/router';
+import {Routes} from '@angular/router';
+import {pagesRoutes} from "./pages/pages.routes";
 
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./pages/home/home.component').then((m) => m.HomeComponent),
-  },
-  {
-    path: 'characters',
-    loadComponent: () => import('./pages/rick-and-mort-list/rick-and-mort-list.component').then((m) => m.RickAndMortListComponent),
-  },
-  {
-    path: 'character/:id',
-    loadComponent: () => import('./pages/rick-and-mort-detail/rick-and-mort-detail.component').then((m) => m.RickAndMortDetailComponent),
+    children: pagesRoutes
   },
   {
     path: '**',

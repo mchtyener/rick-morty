@@ -67,7 +67,7 @@ export class RickAndMortListComponent implements OnInit {
       type: this.sfc['type'].value,
       gender: this.sfc['gender'].value,
       status: this.sfc['status'].value,
-      page: this.page
+      page: ''
     }
   }
 
@@ -123,7 +123,7 @@ export class RickAndMortListComponent implements OnInit {
       }
       this.router.navigate(['/characters'], {queryParams: query});
       this.loadRickMortyList(query)
-    });
+    }).unsubscribe();
   }
 
   checkAndClearSearchFields(queryParams: Filter): Filter {
