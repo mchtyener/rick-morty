@@ -1,13 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {RickyMortyService} from "../../../core/services/ricky-morty.service";
-import {catchError, Observable, tap, throwError} from "rxjs";
-import {Result} from "../../../core/model/rick-and-morty.model";
-import {AsyncPipe, JsonPipe, NgForOf, NgIf} from "@angular/common";
-import {ActivatedRoute, Router, RouterLink} from "@angular/router";
-import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {customGender, Filter, GENDER_AND_TYPE, type} from "../../../core/data/data";
-import {FilterPipe} from "../../../core/pipes/filter.pipe";
-import {LoadingComponent} from "../../../layout/loading/loading.component";
+import { Component, OnInit } from '@angular/core';
+import { RickyMortyService } from "../../../core/services/ricky-morty.service";
+import { catchError, Observable, tap, throwError } from "rxjs";
+import { Result } from "../../../core/model/rick-and-morty.model";
+import { AsyncPipe, JsonPipe, NgForOf, NgIf } from "@angular/common";
+import { ActivatedRoute, Router, RouterLink } from "@angular/router";
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { customGender, Filter, GENDER_AND_TYPE, type } from "../../../core/data/data";
+import { FilterPipe } from "../../../core/pipes/filter.pipe";
+import { LoadingComponent } from "../../../layout/loading/loading.component";
 
 
 @Component({
@@ -33,11 +33,12 @@ export class ListComponent implements OnInit {
   customGender: GENDER_AND_TYPE[] = customGender;
   type: GENDER_AND_TYPE[] = type;
   searchForm!: FormGroup
-  filterCriteria: any = {};  // bunu pipe ile search yapsaydım kullanacaktım bunun içined paremetreler iletecektim ona göre filtrelme gerçekleşecekti
+  filterCriteria: any = {};  // bunu pipe ile search yapsaydım kullanacaktım
   page: string = ''
   loading: boolean = true
 
-  constructor(public rickyMortyService: RickyMortyService, public route: ActivatedRoute, private router: Router, private fb: FormBuilder) {
+  constructor(private rickyMortyService: RickyMortyService, public route: ActivatedRoute,
+              private router: Router, private fb: FormBuilder) {
   }
 
   ngOnInit() {
@@ -46,15 +47,6 @@ export class ListComponent implements OnInit {
       this.createForm(urlQueryParams)
       this.loadRickMortyList(urlQueryParams)
     });
-  }
-
-  createForm(data: Filter) {
-    this.searchForm = this.fb.group({
-      name: new FormControl(data.name ?? ''),
-      status: new FormControl(data.status ?? ''),
-      type: new FormControl(data.type ?? ''),
-      gender: new FormControl(data.gender ?? '')
-    })
   }
 
   get sfc() {
@@ -69,6 +61,15 @@ export class ListComponent implements OnInit {
       status: this.sfc['status'].value,
       page: ''
     }
+  }
+
+  createForm(data: Filter) {
+    this.searchForm = this.fb.group({
+      name: new FormControl(data.name ?? ''),
+      status: new FormControl(data.status ?? ''),
+      type: new FormControl(data.type ?? ''),
+      gender: new FormControl(data.gender ?? '')
+    })
   }
 
   loadRickMortyList(data?: Filter): void {
@@ -94,9 +95,7 @@ export class ListComponent implements OnInit {
 
   clearSearchFields() {
     this.searchForm.reset({gender: '', status: '', name: '', type: ''})
-    this.router.navigate([], {
-      queryParams: {},
-    })
+    this.router.navigate([], {queryParams: {} })
     this.loadRickMortyList()
   }
 

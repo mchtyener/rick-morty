@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {RouterOutlet} from '@angular/router';
-import {myCustomMenuItems} from "./core/data/data";
-import {Menu} from "./core/data/data";
-import {MenuComponent} from "./layout/menu/menu.component";
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
+import { myCustomMenuItems } from "./core/data/data";
+import { Menu } from "./core/data/data";
+import { MenuComponent } from "./layout/menu/menu.component";
 
 @Component({
   selector: 'app-root',

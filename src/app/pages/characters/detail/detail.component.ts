@@ -1,10 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {RickyMortyService} from "../../../core/services/ricky-morty.service";
-import {catchError, Observable, tap, throwError} from "rxjs";
-import {RickyAndMorty} from "../../../core/model/rick-and-morty.model";
-import {AsyncPipe, DatePipe, JsonPipe, NgIf} from "@angular/common";
-import {LoadingComponent} from "../../../layout/loading/loading.component";
-import {Location} from "@angular/common";
+import { Component, Input, OnInit } from '@angular/core';
+import { RickyMortyService } from "../../../core/services/ricky-morty.service";
+import { catchError, Observable, tap, throwError } from "rxjs";
+import { RickyAndMorty } from "../../../core/model/rick-and-morty.model";
+import { AsyncPipe, DatePipe, JsonPipe, NgIf } from "@angular/common";
+import { LoadingComponent } from "../../../layout/loading/loading.component";
+import { Location } from "@angular/common";
 
 @Component({
   selector: 'app-detail',
