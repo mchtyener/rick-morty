@@ -112,15 +112,10 @@ export class ListComponent implements OnInit {
     const url = status === 'next' ? data.next : data.prev;
     this.page = url.match(/page=(\d+)/)[1];
     this.route.queryParams.subscribe((params: Filter) => {
-      let query: Filter = {
-        page: this.page,
-        name: params.name,
-        gender: params.gender,
-        status: params.status,
-        type: params.type,
-      }
-      this.router.navigate(['/characters'], {queryParams: query});
-      this.loadRickMortyList(query)
+      let urlQueryParams: Filter = this.activatedRouteParams(params)
+      urlQueryParams.page = this.page
+      this.router.navigate(['/characters'], {queryParams: urlQueryParams});
+      this.loadRickMortyList(urlQueryParams)
     }).unsubscribe();
   }
 
