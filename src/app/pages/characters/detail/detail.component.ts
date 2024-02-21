@@ -1,13 +1,13 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {RickyMortyService} from "../../core/services/ricky-morty.service";
+import {RickyMortyService} from "../../../core/services/ricky-morty.service";
 import {catchError, Observable, tap, throwError} from "rxjs";
-import {RickyAndMorty} from "../../core/model/rick-and-morty.model";
+import {RickyAndMorty} from "../../../core/model/rick-and-morty.model";
 import {AsyncPipe, DatePipe, JsonPipe, NgIf} from "@angular/common";
-import {LoadingComponent} from "../../layout/loading/loading.component";
+import {LoadingComponent} from "../../../layout/loading/loading.component";
 import {Location} from "@angular/common";
 
 @Component({
-  selector: 'app-rick-and-mort-detail',
+  selector: 'app-detail',
   standalone: true,
   imports: [
     NgIf,
@@ -16,10 +16,10 @@ import {Location} from "@angular/common";
     DatePipe,
     LoadingComponent
   ],
-  templateUrl: './rick-and-mort-detail.component.html',
-  styleUrl: './rick-and-mort-detail.component.scss'
+  templateUrl: './detail.component.html',
+  styleUrl: './detail.component.scss'
 })
-export class RickAndMortDetailComponent implements OnInit {
+export class DetailComponent implements OnInit {
   @Input() id: string = '';
   rickMorty$!: Observable<RickyAndMorty>
   loading: boolean = true

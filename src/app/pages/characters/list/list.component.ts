@@ -1,17 +1,17 @@
 import {Component, OnInit} from '@angular/core';
-import {RickyMortyService} from "../../core/services/ricky-morty.service";
+import {RickyMortyService} from "../../../core/services/ricky-morty.service";
 import {catchError, Observable, tap, throwError} from "rxjs";
-import {Result, RickyAndMorty} from "../../core/model/rick-and-morty.model";
+import {Result} from "../../../core/model/rick-and-morty.model";
 import {AsyncPipe, JsonPipe, NgForOf, NgIf} from "@angular/common";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {customGender, Filter, GENDER_AND_TYPE, type} from "../../core/data/data";
-import {FilterPipe} from "../../core/pipes/filter.pipe";
-import {LoadingComponent} from "../../layout/loading/loading.component";
+import {customGender, Filter, GENDER_AND_TYPE, type} from "../../../core/data/data";
+import {FilterPipe} from "../../../core/pipes/filter.pipe";
+import {LoadingComponent} from "../../../layout/loading/loading.component";
 
 
 @Component({
-  selector: 'app-rick-and-mort-list',
+  selector: 'app-list',
   standalone: true,
   imports: [
     NgIf,
@@ -24,10 +24,10 @@ import {LoadingComponent} from "../../layout/loading/loading.component";
     ReactiveFormsModule,
     LoadingComponent
   ],
-  templateUrl: './rick-and-mort-list.component.html',
-  styleUrl: './rick-and-mort-list.component.scss'
+  templateUrl: './list.component.html',
+  styleUrl: './list.component.scss'
 })
-export class RickAndMortListComponent implements OnInit {
+export class ListComponent implements OnInit {
 
   rickMorty$!: Observable<Result>;
   customGender: GENDER_AND_TYPE[] = customGender;

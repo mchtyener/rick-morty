@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RickAndMortListComponent } from './rick-and-mort-list.component';
+import { ListComponent } from './list.component';
 
 describe('RickAndMortListComponent', () => {
-  let component: RickAndMortListComponent;
-  let fixture: ComponentFixture<RickAndMortListComponent>;
+  let component: ListComponent;
+  let fixture: ComponentFixture<ListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RickAndMortListComponent]
+      imports: [ListComponent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(RickAndMortListComponent);
+
+    fixture = TestBed.createComponent(ListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

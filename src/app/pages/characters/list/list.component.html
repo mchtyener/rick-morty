@@ -31,11 +31,11 @@
         <div class="col-lg-1 col-md-12 col-sm-12 col-12 d-flex gap-1">
           <button class="btn btn-primary d-flex align-items-center justify-content-center"
                   (click)="onFilterChange()">
-            <img width="20" src="assets/images/svg/search.svg" alt="">Search
+            <img width="20" src="../../../../assets/images/svg/search.svg" alt="">Search
           </button>
           <button class="btn btn-danger d-flex align-items-center justify-content-center"
                   (click)="clearSearchFields()">
-            <img width="20" src="assets/images/svg/remove.svg" alt="clear">
+            <img width="20" src="../../../../assets/images/svg/remove.svg" alt="clear">
           </button>
         </div>
       </div>
@@ -54,7 +54,7 @@
           <p class="card-text m-0"><b>Gender: </b>{{data.gender}}</p>
         </div>
         <div class="card-footer border-0 bg-transparent">
-          <a routerLink="/character/{{data.id}}" class="btn d-block btn-primary"> <i class="bi bi-arrow-right"></i>
+          <a [routerLink]="data.id.toString()" class="btn d-block btn-primary"> <i class="bi bi-arrow-right"></i>
             Details</a>
         </div>
       </div>

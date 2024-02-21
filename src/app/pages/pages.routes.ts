@@ -7,11 +7,6 @@ export const pagesRoutes: Routes = [
   },
   {
     path: 'characters',
-    loadComponent: () => import('./rick-and-mort-list/rick-and-mort-list.component').then((m) => m.RickAndMortListComponent),
+    loadChildren: () => import('./characters/characters.routes').then((m) => m.charactersRoutes),
   },
-  {
-    path: 'character/:id',
-    loadComponent: () => import('./rick-and-mort-detail/rick-and-mort-detail.component').then((m) => m.RickAndMortDetailComponent),
-  },
-
 ];

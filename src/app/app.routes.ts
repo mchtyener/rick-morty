@@ -4,7 +4,7 @@ import {pagesRoutes} from "./pages/pages.routes";
 export const routes: Routes = [
   {
     path: '',
-    children: pagesRoutes
+    loadChildren: () => import('./pages/pages.routes').then((m) => m.pagesRoutes),
   },
   {
     path: '**',
