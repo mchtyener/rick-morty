@@ -72,9 +72,8 @@ export class ListComponent implements OnInit {
   }
 
   loadRickMortyList(data?: Filter): void {
-    let queryParams: Filter = this.activatedRouteParams(data)
-    let item: Filter = this.checkAndClearSearchFields(queryParams)
-    this.rickMorty$ = this.rickyMortyService.getAllRickyAndMortyList(item).pipe(tap(() => {
+    let queryParams: Filter = this.checkAndClearSearchFields(this.activatedRouteParams(data))
+    this.rickMorty$ = this.rickyMortyService.getAllRickyAndMortyList(queryParams).pipe(tap(() => {
         return this.loading = true
       }),
       catchError((error) => {
@@ -102,10 +101,9 @@ export class ListComponent implements OnInit {
   }
 
   onFilterChange() {
-    let queryParams: Filter = this.searchQueryFormValue
-    let item = this.checkAndClearSearchFields(queryParams)
-    this.loadRickMortyList(item)
-    this.router.navigate([], {queryParams: item});
+    let queryParams: Filter = this.checkAndClearSearchFields(this.searchQueryFormValue)
+    this.loadRickMortyList(queryParams)
+    this.router.navigate([], {queryParams: queryParams});
   }
 
   nextAndBackPage(status: string, data: any) {
