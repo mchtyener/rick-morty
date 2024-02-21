@@ -4,6 +4,7 @@ import {catchError, Observable, tap, throwError} from "rxjs";
 import {RickyAndMorty} from "../../core/model/rick-and-morty.model";
 import {AsyncPipe, DatePipe, JsonPipe, NgIf} from "@angular/common";
 import {LoadingComponent} from "../../layout/loading/loading.component";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-rick-and-mort-detail',
@@ -33,6 +34,7 @@ export class RickAndMortDetailComponent implements OnInit {
       }));
   }
 
-  constructor(private rickyMortyService: RickyMortyService) {
+  constructor(private rickyMortyService: RickyMortyService, public location: Location) {
   }
+
 }

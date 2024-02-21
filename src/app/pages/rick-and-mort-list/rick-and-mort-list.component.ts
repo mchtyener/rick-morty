@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RickyMortyService} from "../../core/services/ricky-morty.service";
 import {catchError, Observable, tap, throwError} from "rxjs";
-import {Result} from "../../core/model/rick-and-morty.model";
+import {Result, RickyAndMorty} from "../../core/model/rick-and-morty.model";
 import {AsyncPipe, JsonPipe, NgForOf, NgIf} from "@angular/common";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
