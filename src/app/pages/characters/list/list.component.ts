@@ -94,9 +94,7 @@ export class ListComponent implements OnInit {
   }
 
   clearSearchFields() {
-    this.searchForm.reset()
-    this.searchForm.get('gender')?.setValue('')
-    this.searchForm.get('status')?.setValue('')
+    this.searchForm.reset({gender: '', status: '', name: '', type: ''})
     this.router.navigate([], {
       queryParams: {},
     })
